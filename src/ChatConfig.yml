@@ -60,6 +60,8 @@
     town: '[townformat]'
     # NATION channel types.
     nation: '[nationformat]'
+    # ALLIES channel types.
+    allies: '[alliesformat]'
     # DEFAULT channel types.
     default: '[defaultformat]'
     
@@ -67,6 +69,7 @@
       world: '[tag_world]'
       town: '[tag_town]'
       nation: '[tag_nation]'
+      allies: '[tag_allies]'
       # First %s is the nation tag, second is the town tag.
       both: '[tag_both]'
       

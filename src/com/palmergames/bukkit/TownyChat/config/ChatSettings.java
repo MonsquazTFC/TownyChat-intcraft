@@ -205,7 +205,7 @@ public class ChatSettings extends tag_formats {
 
 class tag_formats extends chat_colours{
 
-	private static String WorldTag, TownTag, NationTag, BothTags;
+	private static String WorldTag, TownTag, NationTag, AlliesTag, BothTags;
 
 	/**
 	 * @return the World tag
@@ -249,6 +249,20 @@ class tag_formats extends chat_colours{
 		tag_formats.NationTag = tag;
 	}
 
+	/**
+	 * @return AlliesTag
+	 */
+	public static String getAlliesTag() {
+		return AlliesTag;
+	}
+
+	/**
+	 * @param tag the ALLIES tag to set
+	 */
+	public static void setAlliesTag(String tag) {
+		tag_formats.AlliesTag = tag;
+	}
+	
 	/**
 	 * @return BothTags the nation and town tags
 	 */

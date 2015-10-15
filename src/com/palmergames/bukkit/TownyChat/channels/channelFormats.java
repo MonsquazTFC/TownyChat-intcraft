@@ -14,7 +14,7 @@ public class channelFormats {
 		this.name = name.toLowerCase();
 	}
 
-	private String name, GLOBAL, TOWN, NATION, DEFAULT;
+	private String name, GLOBAL, TOWN, NATION, ALLIES, DEFAULT;
 
 	/**
 	 * @return a clone of this channelFormats
@@ -26,11 +26,12 @@ public class channelFormats {
 		clone.setGLOBAL(this.getGLOBAL());
 		clone.setTOWN(this.getTOWN());
 		clone.setNATION(this.getNATION());
+		clone.setALLIES(this.getALLIES());
 		clone.setDEFAULT(this.getDEFAULT());
 		
 		return clone;
 	}
-	
+
 	/**
 	 * @return the name
 	 */
@@ -89,6 +90,21 @@ public class channelFormats {
 	 */
 	public void setNATION(String NATION) {
 		this.NATION = NATION;
+	}
+
+	/**
+	 * @return the ALLIES
+	 */
+	public String getALLIES() {
+		return this.ALLIES;
+	}
+	
+	/**
+	 * @param ALLIES
+	 *            the ALLIES to set
+	 */
+	public void setALLIES(String ALLIES) {
+		this.ALLIES = ALLIES;
 	}
 
 	/**

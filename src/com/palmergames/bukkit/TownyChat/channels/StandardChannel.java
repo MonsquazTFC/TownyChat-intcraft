@@ -45,12 +45,14 @@ public class StandardChannel extends Channel {
 		Resident resident = null;
 		Town town = null;
 		Nation nation = null;
+		List<Nation> allies = null;
 		String Format = "";
 		
 		try {
 			resident = TownyUniverse.getDataSource().getResident(player.getName());
 			town = resident.getTown();
 			nation = resident.getTown().getNation();
+			allies = resident.getTown().getNation().getAllies();
 		} catch (NotRegisteredException e1) {
 			// Not in a town/nation (doesn't matter which)
 		}
@@ -67,6 +69,7 @@ public class StandardChannel extends Channel {
 		 *  Retrieve the channel specific format
 		 *  and compile a set of recipients
 		 */
+
 		switch (exec) {
 		
 		case TOWN:
@@ -86,6 +89,23 @@ public class StandardChannel extends Channel {
 			}
 			Format = ChatSettings.getRelevantFormatGroup(player).getNATION();
 			recipients = new HashSet<Player>(findRecipients(player, TownyUniverse.getOnlinePlayers(nation)));
+			recipients = checkSpying(recipients);
+			break;
+		
+		case ALLIES:
+			if (nation == null) {
+				event.setCancelled(true);
+				return;
+			}
+			Format = ChatSettings.getRelevantFormatGroup(player).getALLIES();
+			List<Player> recipients_list = new ArrayList<Player>();
+			// add all players from own nation
+			recipients_list.addAll(TownyUniverse.getOnlinePlayers(nation));
+			// add all players from allied nations
+			for (Nation ally : allies)
+				recipients_list.addAll(TownyUniverse.getOnlinePlayers(ally));
+			
+			recipients = new HashSet<Player>(findRecipients(player, recipients_list));
 			recipients = checkSpying(recipients);
 			break;
 			
@@ -154,6 +174,10 @@ public class StandardChannel extends Channel {
 			break;
 		
 		case NATION:
+			//plugin.getLogger().info(ChatTools.stripColour("[Nation Msg] " + nation.getName() + ": " + msg));
+			break;
+			
+		case ALLIES:
 			//plugin.getLogger().info(ChatTools.stripColour("[Nation Msg] " + nation.getName() + ": " + msg));
 			break;
 			

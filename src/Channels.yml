@@ -59,6 +59,15 @@ Channels:
         craftIRCTag: 'admin'
         range: '-1'
         
+    allies:
+        commands: [ac]
+        type: ALLIES
+        channeltag: '&f[&2AC&f]'
+        messagecolour: '&a'
+        permission: 'towny.chat.nation'
+        craftIRCTag: 'admin'
+        range: '-1'
+        
     admin:
         commands: [a,admin]
         type: DEFAULT

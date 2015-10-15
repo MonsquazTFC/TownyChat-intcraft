@@ -235,6 +235,9 @@ public class ConfigurationHandler {
 
 						if (element.equalsIgnoreCase("nation"))
 							ChatSettings.setNationTag(subNodes.get(element).toString());
+						
+						if (element.equalsIgnoreCase("allies"))
+							ChatSettings.setAlliesTag(subNodes.get(element).toString());
 
 						if (element.equalsIgnoreCase("both"))
 							ChatSettings.setBothTags(subNodes.get(element).toString());
@@ -256,6 +259,9 @@ public class ConfigurationHandler {
 
 						if (element.equalsIgnoreCase("nation"))
 							group.setNATION(subNodes.get(element).toString());
+						
+						if (element.equalsIgnoreCase("allies"))
+							group.setALLIES(subNodes.get(element).toString());
 
 						if (element.equalsIgnoreCase("default"))
 							group.setDEFAULT(subNodes.get(element).toString());
@@ -282,6 +288,9 @@ public class ConfigurationHandler {
 	
 								if (element.equalsIgnoreCase("nation"))
 									group.setNATION(world.get(element).toString());
+								
+								if (element.equalsIgnoreCase("allies"))
+									group.setALLIES(world.get(element).toString());
 	
 								if (element.equalsIgnoreCase("default"))
 									group.setDEFAULT(world.get(element).toString());
@@ -342,17 +351,18 @@ public class ConfigurationHandler {
 		String global = "{channelTag} {worldname}{townytagoverride}{townycolor}{permprefix}{group} {townyprefix}{modplayername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
 		String town = "{channelTag} {townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
 		String nation = "{channelTag}{towntagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
+		String allies = "{channelTag}{towntagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
 		String default_ = "{channelTag} {permprefix}{playername}{permsuffix}&f:{msgcolour} {msg}";
 		
 		String tag_world = "&f[&f%s&f] ";
 		String tag_town = "&f[&3%s&f] ";
 		String tag_nation = "&f[&e%s&f] ";
+		String tag_allies = "&f[&a%s&f] ";
 		String tag_both = "&f[&6%s&f|&3%s&f] ";
 		
 		String king = "&6";
 		String mayor = "&b";
 		String resident = "&f";
-		
 		
 		newConfig = newConfig.replace("[spam_time]", (defaults)? "0.5" : Double.toString(ChatSettings.getSpam_time()));
 		
@@ -362,11 +372,13 @@ public class ConfigurationHandler {
 		newConfig = newConfig.replace("[globalformat]", (defaults)? global : ChatSettings.getFormatGroup("channel_formats").getGLOBAL());
 		newConfig = newConfig.replace("[townformat]", (defaults)? town : ChatSettings.getFormatGroup("channel_formats").getTOWN());
 		newConfig = newConfig.replace("[nationformat]", (defaults)? nation : ChatSettings.getFormatGroup("channel_formats").getNATION());
+		newConfig = newConfig.replace("[alliesformat]", (defaults)? allies : ChatSettings.getFormatGroup("channel_formats").getALLIES());
 		newConfig = newConfig.replace("[defaultformat]", (defaults)? default_ : ChatSettings.getFormatGroup("channel_formats").getDEFAULT());
 
 		newConfig = newConfig.replace("[tag_world]", (defaults)? tag_world : ChatSettings.getWorldTag());
 		newConfig = newConfig.replace("[tag_town]", (defaults)? tag_town : ChatSettings.getTownTag());
 		newConfig = newConfig.replace("[tag_nation]", (defaults)? tag_nation : ChatSettings.getNationTag());
+		newConfig = newConfig.replace("[tag_allies]", (defaults)? tag_allies : ChatSettings.getAlliesTag());
 		newConfig = newConfig.replace("[tag_both]", (defaults)? tag_both : ChatSettings.getBothTags());
 		
 		newConfig = newConfig.replace("[colour_king]", (defaults)? king : ChatSettings.getKingColour());
@@ -387,6 +399,7 @@ public class ConfigurationHandler {
 				newConfig += "      global: '" + ((defaults)? global : world.getGLOBAL()) + "'" + System.getProperty("line.separator");
 				newConfig += "      town: '" + ((defaults)? town : world.getTOWN()) + "'" + System.getProperty("line.separator");
 				newConfig += "      nation: '" + ((defaults)? nation : world.getNATION()) + "'" + System.getProperty("line.separator");
+				newConfig += "      allies: '" + ((defaults)? allies : world.getALLIES()) + "'" + System.getProperty("line.separator");
 				newConfig += "      default: '" + ((defaults)? default_ : world.getDEFAULT()) + "'" + System.getProperty("line.separator");
 			}
 			
