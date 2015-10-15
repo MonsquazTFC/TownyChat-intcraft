@@ -1,51 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TownyChat" default="jar" basedir=".">
-	<property name="build" value="bin" />
-	<property file="build.properties" />
-	<property environment="env"/>
+<project name="TownyChat" default="build" basedir=".">
+	<property file="build.properties"/>
+	<property name="stage" value="unknown"/>
+	<property name="version" value="0"/>
+	
+	<property name="jarname" value="TownyChat-intcraft"/>
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="build" location="build"/>
+	
+	<target name="init">
+		<mkdir dir="${bin}"/>
+	 </target>
 
-	<target name="clean">
-		<delete dir="${build}" />
-	</target>
-
-	<target name="init" depends="clean">
-		<mkdir dir="${build}" />
-		<mkdir dir="${env.LIB}" />
-	</target>
-
-	<target name="download" depends="init">
-
-		<get src="http://palmergames.com/libs/bukkit.jar" dest="${env.LIB}/bukkit.jar" skipexisting="true" />
-		<get src="http://palmergames.com/libs/Towny.jar" dest="${env.LIB}/Towny.jar" skipexisting="true" />
-		<get src="http://palmergames.com/libs/Essentials.jar" dest="${env.LIB}/Essentials.jar" skipexisting="true" />
-		<get src="http://palmergames.com/libs/CraftIRC.jar" dest="${env.LIB}/CraftIRC.jar" skipexisting="true" />
-		<get src="http://palmergames.com/libs/dynmap-api.jar" dest="${env.LIB}/dynmap-api.jar" skipexisting="true" />
-		<get src="http://palmergames.com/libs/HeroicDeath.jar" dest="${env.LIB}/HeroicDeath.jar" skipexisting="true" />
-
-	</target>
-
-	<target name="compile" depends="download">
-		<!-- Compile the java code -->
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" target="1.6" source="1.6" debug="true">
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
 			<classpath>
-				<pathelement location="${env.LIB}/bukkit.jar" />
-				<pathelement location="${env.LIB}/Towny.jar" />
-				<pathelement location="${env.LIB}/Essentials.jar" />
-				<pathelement location="${env.LIB}/CraftIRC.jar" />
-				<pathelement location="${env.LIB}/dynmap-api.jar" />
-				<pathelement location="${env.LIB}/HeroicDeath.jar" />
+				<pathelement location="./lib/spigot-1.8.8.jar" />
+				<pathelement location="./lib/Towny-intcraft.jar" />
+				<pathelement location="./lib/Essentials-2.x-SNAPSHOT.jar" />
+				<pathelement location="./lib/CraftIRC.jar" />
+				<pathelement location="./lib/dynmap-2.2.jar" />
+				<pathelement location="./lib/HeroicDeath.jar" />
 			</classpath>
 		</javac>
 	</target>
 
-	<target name="jar" depends="compile">
-		<replace file="./src/plugin.yml" token="{BUILD_VER}" value="${env.TOWNYCHAT_BUILD_VER}"/>
-		<!-- Build the jar file -->
-		<jar basedir="${build}" destfile="${env.LIB}/TownyChat.jar">
-			<fileset dir="./src" includes="changelog.txt" />
-			<fileset dir="./src" includes="Channels.yml" />
-			<fileset dir="./src" includes="ChatConfig.yml" />
-			<fileset dir="./src" includes="plugin.yml" />
+	<target name="build" depends="compile">
+		<mkdir dir="${build}"/>
+		<jar jarfile="${build}/${jarname}-${stage}_${version}.jar">
+			<fileset dir="${bin}"/>
+			<fileset dir="./src" includes="changelog.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
 		</jar>
+	</target>
+	
+	<target name="clean" depends="init">
+		<delete dir="${bin}"/>
 	</target>
 </project>
