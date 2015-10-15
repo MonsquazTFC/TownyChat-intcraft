@@ -17,7 +17,7 @@
 		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
 			<classpath>
 				<pathelement location="./lib/spigot-1.8.8.jar" />
-				<pathelement location="./lib/Towny-intcraft.jar" />
+				<pathelement location="./lib/Towny-intcraft-alpha_1.0.5.jar" />
 				<pathelement location="./lib/Essentials-2.x-SNAPSHOT.jar" />
 				<pathelement location="./lib/CraftIRC.jar" />
 				<pathelement location="./lib/dynmap-2.2.jar" />
@@ -29,8 +29,8 @@
 	<target name="build" depends="compile">
 		<mkdir dir="${build}"/>
 		<jar jarfile="${build}/${jarname}-${stage}_${version}.jar">
+			<fileset dir="${src}" includes="changelog.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
 			<fileset dir="${bin}"/>
-			<fileset dir="./src" includes="changelog.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
 		</jar>
 	</target>
 	

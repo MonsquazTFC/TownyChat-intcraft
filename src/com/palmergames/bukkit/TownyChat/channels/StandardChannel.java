@@ -235,6 +235,7 @@ public class StandardChannel extends Channel {
 	 * @param list
 	 * @return Set containing a list of players for this message.
 	 */
+	@SuppressWarnings("deprecation")
 	private Set<Player> findRecipients(Player sender, List<Player> list) {
 		
 		Set<Player> recipients = new HashSet<Player>();
