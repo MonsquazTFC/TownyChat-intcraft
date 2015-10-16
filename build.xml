@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TownyChat" default="build" basedir=".">
+<project name="TownyChat" default="dist" basedir=".">
 	<property file="build.properties"/>
-	<property name="stage" value="unknown"/>
-	<property name="version" value="0"/>
-	
-	<property name="jarname" value="TownyChat-intcraft"/>
-	<property name="src" location="src"/>
-	<property name="bin" location="bin"/>
-	<property name="build" location="build"/>
-	
-	<target name="init">
-		<mkdir dir="${bin}"/>
-	 </target>
 
-	<target name="compile" depends="init">
-		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
+	<target name="clean">
+		<delete dir="${build}" deleteonexit="true"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}"/>
+	</target>
+
+	<target name="build" depends="init">
+		<javac srcdir="${src}" destdir="${build}" includeantruntime="false">
 			<classpath>
 				<pathelement location="./lib/spigot-1.8.8.jar" />
 				<pathelement location="./lib/Towny-intcraft-alpha_1.0.5.jar" />
@@ -26,15 +23,11 @@
 		</javac>
 	</target>
 
-	<target name="build" depends="compile">
-		<mkdir dir="${build}"/>
-		<jar jarfile="${build}/${jarname}-${stage}_${version}.jar">
+	<target name="dist" depends="build">
+		<mkdir dir="${dist}"/>
+		<jar destfile="${dist}/${jarname}-${stage}_${version}.jar">
+			<fileset dir="${build}"/>
 			<fileset dir="${src}" includes="changelog.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
-			<fileset dir="${bin}"/>
 		</jar>
-	</target>
-	
-	<target name="clean" depends="init">
-		<delete dir="${bin}"/>
 	</target>
 </project>
