@@ -27,7 +27,7 @@
 		<mkdir dir="${dist}"/>
 		<jar destfile="${dist}/${jarname}-${stage}_${version}.jar">
 			<fileset dir="${build}"/>
-			<fileset dir="${src}" includes="changelog.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
+			<fileset dir="${src}" includes="ChangeLog.txt, ChangeLog-intcraft.txt, Channels.yml, ChatConfig.yml, plugin.yml" />
 		</jar>
 	</target>
 </project>
