@@ -14,7 +14,7 @@
 		<javac srcdir="${src}" destdir="${build}" includeantruntime="false">
 			<classpath>
 				<pathelement location="./lib/spigot-1.8.8.jar" />
-				<pathelement location="./lib/Towny-intcraft-alpha_1.0.5.jar" />
+				<pathelement location="./lib/Towny-intcraft-release_1.0.0.jar" />
 				<pathelement location="./lib/Essentials-2.x-SNAPSHOT.jar" />
 				<pathelement location="./lib/CraftIRC.jar" />
 				<pathelement location="./lib/dynmap-2.2.jar" />
