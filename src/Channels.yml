@@ -64,7 +64,7 @@ Channels:
         type: ALLIES
         channeltag: '&f[&2AC&f]'
         messagecolour: '&a'
-        permission: 'towny.chat.nation'
+        permission: 'towny.chat.allies'
         craftIRCTag: 'admin'
         range: '-1'
         

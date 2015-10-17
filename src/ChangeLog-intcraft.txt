@@ -1,2 +1,5 @@
 release_1.0.0:
 	- Added allied chat
+	
+release_1.0.1:
+	- allied chat towny.chat.nation to towny.chat.allies
