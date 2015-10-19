@@ -35,7 +35,7 @@ Channels:
     general:
         commands: [g]
         type: GLOBAL
-        channeltag: '&f[g]'
+        channeltag: '&f[G]'
         messagecolour: '&f'
         permission: 'towny.chat.general'
         craftIRCTag: 'admin'
@@ -89,7 +89,7 @@ Channels:
     local:
         commands: [l,lc]
         type: GLOBAL
-        channeltag: '&f[local]'
+        channeltag: '&f[L]'
         messagecolour: '&f'
         permission: 'towny.chat.local'
         craftIRCTag: 'admin'

@@ -348,10 +348,10 @@ public class ConfigurationHandler {
 	 */
 	public String setConfigs(String newConfig, boolean defaults) {
 		
-		String global = "{channelTag} {worldname}{townytagoverride}{townycolor}{permprefix}{group} {townyprefix}{modplayername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
+		String global = "{channelTag} {townytagoverride}{townycolor}{permprefix}{townyprefix}{modplayername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
 		String town = "{channelTag} {townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
-		String nation = "{channelTag}{towntagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
-		String allies = "{channelTag}{towntagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
+		String nation = "{channelTag} {towntagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
+		String allies = "{channelTag} {townytagoverride}{townycolor}{permprefix}{townyprefix}{playername}{townypostfix}{permsuffix}&f:{msgcolour} {msg}";
 		String default_ = "{channelTag} {permprefix}{playername}{permsuffix}&f:{msgcolour} {msg}";
 		
 		String tag_world = "&f[&f%s&f] ";
